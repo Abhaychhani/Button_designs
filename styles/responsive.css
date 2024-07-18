@@ -1,0 +1,27 @@
+@media screen and (max-width:768px) {
+    section.all-btn-links{
+        flex-direction: column-reverse;
+        height: 100vh;
+    }
+
+    figure.btn-img{
+        width: 90%;
+        aspect-ratio: 9/11;
+        /* height:70vh; */
+    }
+    .btn-title{
+        text-align: center;
+    }
+    .about-btn p{
+        text-align: justify;
+    }
+
+}
+@media screen and (max-width:480px) {
+    html{
+        font-size:85%;
+    }
+    figure.btn-img{
+        width: 100%;
+    }
+}
