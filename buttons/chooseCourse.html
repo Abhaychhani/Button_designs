@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Choose Your Course</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: linear-gradient(45deg, blue, skyblue);
+      }
+      section {
+        background: #fff;
+        padding: 0.5rem 1rem;
+        border-radius: 0.24rem;
+        box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.5);
+        width: clamp(50%, 350px, 95%);
+      }
+      section h1.title {
+        font-weight: 500;
+        padding: 0.5rem 0;
+        margin-bottom: 0.9rem;
+        color: #020202;
+      }
+      section input[type="radio"]{
+        appearance: none;
+      }
+      section label {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap:0.6rem;
+        padding: 0.6rem;
+        border-radius: 0.3rem;
+        margin-bottom: 0.5rem;
+        background: #eee;
+        box-shadow: 0 3px 7px rgba(0, 0, 0, 0.12);
+      }
+      section label:hover {
+        background: #ddbafd;
+      }
+      section label .dot{
+        margin-left: 0.3rem;
+        height:20px;
+        aspect-ratio: 1/1;
+        background: #888;
+        border:4px solid #bbb;
+        border-radius: 50%;
+      }
+      section label p.details{
+        width: 90%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.7rem;
+        color: #333;
+      }
+      section input#html:checked ~ label .dot.one,
+      section input#javascript:checked ~ label .dot.two,
+      section input#backend:checked ~ label .dot.three{
+        background:#c085f7;
+        border-color:#8a2be2;
+      }
+      section input#html:checked ~ label[for="html"],
+      section input#javascript:checked ~ label[for="javascript"],
+      section input#backend:checked ~ label[for="backend"]{
+        outline: #8a2be2 solid 2px;
+        background: #ddbafd;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <h1 class="title">Choose Your Course</h1>
+      <input type="radio" id="html" name="courses" />
+      <input type="radio" id="javascript" name="courses" />
+      <input type="radio" id="backend" name="courses" />
+      <label for="html">
+        <div class="dot one"></div>
+        <p class="details">
+          <span class="course">HTML & CSS</span>
+          <span class="price">100$/year</span>
+        </p>
+      </label>
+      <label for="javascript">
+        <div class="dot two"></div>
+        <p class="details">
+          <span class="course">Javascript</span>
+          <span class="price">120$/year</span>
+        </p>
+      </label>
+      <label for="backend">
+        <div class="dot three"></div>
+        <p class="details">
+          <span class="course">PHP & MySQL</span>
+          <span class="price">150$/year</span>
+        </p>
+      </label>
+    </section>
+  </body>
+</html>

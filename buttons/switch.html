@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Switch toggle Effect button</title>
+    <style>
+         @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+      body{
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #8212e2;
+      }
+      .switch{
+        position: relative;
+        width:80px;
+        height: 12px;
+        border-radius: 25px;
+        background: white;
+      }
+      .switch::after{
+        content: "";
+        position: absolute;
+        left: 0;
+        top:50%;
+        transform: translate(-50%,-50%);
+        height:40px;
+        aspect-ratio: 1/1;
+        background:#8212e2;
+        box-shadow: 0 0 0 8px #8212e2,0 0 0 5px white inset;
+        border-radius: 50%;
+        transition: left 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),background 0.3s ease-in 0.1s;
+      }
+      .switch.on::after{
+        left: 100%;
+        transform: translate(-50%,-50%);
+        background:white;
+      }
+
+    </style>
+</head>
+<body>
+    <div class="switch"></div>
+    <script>
+        let switchBtn = document.querySelector(".switch")
+        switchBtn.addEventListener("click",()=>{
+            switchBtn.classList.toggle("on");
+        })
+    </script>
+</body>
+</html>

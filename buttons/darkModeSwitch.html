@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Enable Dark Mode Switch| with localStorage</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      [theme="light"]{
+        --bg:blue;
+      }
+      [theme="dark"]{
+        --bg:#10011a;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background:var(--bg);
+        transition: background 0.3s ease;
+      }
+      .button {
+        position: relative;
+        width: 100px;
+        height: 40px;
+        background: white;
+        border-radius: 20px;
+      }
+      .button::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 10px;
+        transform: translate(-5px, -50%);
+        height: 30px;
+        aspect-ratio: 1/1;
+        background: var(--bg);
+        border-radius: 50%;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.24);
+        transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+      }
+      .button.on::after {
+        left: 100%;
+        transform: translate(calc(-100% + -5px), -50%);
+      }
+    </style>
+  </head>
+  <body theme="light">
+    <div class="button"></div>
+    <script>
+      const button = document.querySelector(".button");
+      const body=document.querySelector('body');
+      // let mode = localStorage.getItem("theme")
+      
+      button.addEventListener("click",()=>{
+        if(body.attributes.theme.value=="light"){
+          localStorage.setItem("theme","dark");
+        }else{
+          localStorage.setItem("theme","light")
+        }
+        setMode()
+        // console.log(document.body.attributes.theme.value);
+      })
+      function setMode(){
+        body.setAttribute('theme',localStorage.getItem("theme"))
+      }
+    </script>
+  </body>
+</html>

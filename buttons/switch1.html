@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Enable Disable Switch Button</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: limegreen;
+      }
+      .btn-wrapper {
+        width: 220px;
+        min-height: 60px;
+        border-radius: 4px;
+        background: white;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem;
+        box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.3);
+      }
+      .btn-wrapper button {
+        position: relative;
+        height: 30px;
+        width: 75px;
+        border-radius: 16px;
+        border: none;
+        background: #ccc;
+        box-shadow: inset 2px 2px 5px 0 #aaa, 2px 2px 3px 0 #888;
+      }
+      .btn-wrapper button::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 3px;
+        transform: translate(0, -50%);
+        height: calc(100% - 6px);
+        aspect-ratio: 1/1;
+        background: white;
+        border-radius: 50%;
+        box-shadow: inset 2px 2px 5px 0 #999, 2px 2px 5px 0 #444;
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+      .btn-wrapper span.text {
+        font-size: 1.15rem;
+        color: #ccc;
+        font-weight: 600;
+        transition: all 0.3s ease 0.1s;
+      }
+      .btn-wrapper button.active {
+        background: limegreen;
+      }
+      .btn-wrapper button.active::after {
+        left: 100%;
+        transform: translate(calc(-100% + -3px), -50%);
+      }
+      .btn-wrapper button.active + .text {
+        color: #32cd32;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="btn-wrapper">
+      <button></button>
+      <span class="text">Disabled</span>
+    </div>
+    <script>
+      document
+        .querySelector(".btn-wrapper > button")
+        .addEventListener("click", (e) => {
+          e.target.classList.toggle("active");
+          if (e.target.classList.contains("active")) {
+            document.querySelector(".btn-wrapper > .text").innerText =
+              "Enabled";
+          } else {
+            document.querySelector(".btn-wrapper > .text").innerText =
+              "Disabled";
+          }
+        });
+    </script>
+  </body>
+</html>
