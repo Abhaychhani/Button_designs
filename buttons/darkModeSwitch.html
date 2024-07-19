@@ -13,18 +13,18 @@
         font-family: "Poppins", sans-serif;
       }
 
-      [theme="light"]{
-        --bg:blue;
+      [theme="light"] {
+        --bg: blue;
       }
-      [theme="dark"]{
-        --bg:#10011a;
+      [theme="dark"] {
+        --bg: #10011a;
       }
       body {
         display: flex;
         justify-content: center;
         align-items: center;
         height: 100vh;
-        background:var(--bg);
+        background: var(--bg);
         transition: background 0.3s ease;
       }
       .button {
@@ -57,21 +57,35 @@
     <div class="button"></div>
     <script>
       const button = document.querySelector(".button");
-      const body=document.querySelector('body');
-      // let mode = localStorage.getItem("theme")
-      
-      button.addEventListener("click",()=>{
-        if(body.attributes.theme.value=="light"){
-          localStorage.setItem("theme","dark");
-        }else{
-          localStorage.setItem("theme","light")
-        }
-        setMode()
-        // console.log(document.body.attributes.theme.value);
-      })
-      function setMode(){
-        body.setAttribute('theme',localStorage.getItem("theme"))
+      const body = document.querySelector("body");
+
+      if (
+        localStorage.getItem("theme") !== "light" &&
+        localStorage.getItem("theme") !== "dark"
+      ) {
+        localStorage.setItem("theme", "light");
       }
+
+      function setMode() {
+        let mode = localStorage.getItem("theme");
+        body.setAttribute("theme", mode);
+
+        if (body.attributes.theme.value === "light") {
+          button.classList.remove("on");
+        } else {
+          button.classList.add("on");
+        }
+      }
+      setMode();
+
+      button.addEventListener("click", () => {
+        if (localStorage.getItem("theme") === "light") {
+          localStorage.setItem("theme", "dark");
+        } else {
+          localStorage.setItem("theme", "light");
+        }
+        setMode();
+      });
     </script>
   </body>
 </html>
