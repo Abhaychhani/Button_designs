@@ -28,7 +28,7 @@
       }
       .button.active{
         height:20px;
-        width: 500px;
+        width:470px;
       }
       .button::before{
         content: "";
@@ -70,6 +70,15 @@
     .content .button-text{
         font-size: 28px;
         margin-left: 8px;
+      }
+      @media screen and (max-width:480px) {
+        .button{
+          height: 75px;
+          width:min(80%,320px);
+        }
+        .button.active{
+          width:min(100%,320px);
+        }
       }
     </style>
     <!-- boxicons CDN Link -->
